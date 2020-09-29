@@ -28,8 +28,7 @@
     </properties>
 
     <dependencies>
-        <!--pdf生成工具类-->
-        <!--pdf生成 itext-->
+        <!--生成pdf工具包-->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
