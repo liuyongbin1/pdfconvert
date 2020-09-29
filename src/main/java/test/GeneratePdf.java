@@ -32,15 +32,14 @@ public class GeneratePdf {
         PdfDataDTO pdfDataDTO = new PdfDataDTO();
         pdfDataDTO.setHeaderTitle("模板转PDF文件");
         pdfDataDTO.setContent("主要内容");
-        pdfDataDTO.setLogoFile("");
-        pdfDataDTO.setCachetFile("");
+        pdfDataDTO.setLogoFile("D:\\haxi\\pdfconvert\\src\\main\\resources\\logo.png");
+        pdfDataDTO.setCachetFile("D:\\haxi\\pdfconvert\\src\\main\\resources\\logo.png");
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bf = new BufferedReader(new FileReader("D:\\haxi\\pdfconvert\\src\\main\\resources\\test.html"))) {
             String s = null;
             while ((s = bf.readLine()) != null) {
                 stringBuilder.append(s.trim());
             }
-//            System.out.println(stringBuilder.toString());
             String templateData = PdfUtil.fillTemplateData(stringBuilder.toString(), pdfDataDTO);
             try (FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\hjy20\\Desktop\\hello.pdf")) {
                 fileOutputStream.write(createOrderContractPdf(templateData, pdfDataDTO));
