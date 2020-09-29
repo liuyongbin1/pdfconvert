@@ -9,10 +9,11 @@ import lombok.Data;
  * @Date: 2020/09/29 14:51
  */
 @Data
-public class PdfDataDTO {
+public class PdfDataDTO<T> {
 
     private String headerTitle;
     private String content;
     private String logoFile;
     private String cachetFile;
+    private T data;
 }

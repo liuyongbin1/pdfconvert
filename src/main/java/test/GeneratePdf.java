@@ -6,6 +6,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 import dto.PdfDataDTO;
+import dto.Student;
 import lombok.extern.slf4j.Slf4j;
 import pdf.PDFBuilder;
 import pdf.PDFHeaderFooter;
@@ -29,11 +30,15 @@ public class GeneratePdf {
 
     public static void main(String[] args) throws Exception {
         long l = System.currentTimeMillis();
-        PdfDataDTO pdfDataDTO = new PdfDataDTO();
+        Student student = new Student();
+        student.setName("小明");
+        student.setSex("男");
+        PdfDataDTO<Student> pdfDataDTO = new PdfDataDTO<>();
         pdfDataDTO.setHeaderTitle("模板转PDF文件");
         pdfDataDTO.setContent("主要内容");
         pdfDataDTO.setLogoFile("D:\\haxi\\pdfconvert\\src\\main\\resources\\logo.png");
         pdfDataDTO.setCachetFile("D:\\haxi\\pdfconvert\\src\\main\\resources\\logo.png");
+        pdfDataDTO.setData(student);
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bf = new BufferedReader(new FileReader("D:\\haxi\\pdfconvert\\src\\main\\resources\\test.html"))) {
             String s = null;
