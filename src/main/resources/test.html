@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            font-family: pingfang sc light;
+        }
+
+        .center {
+            text-align: center;
+            width: 100%;
+            color: blue;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!--第一页开始-->
+<div class="page">
+    <div class="center"><p>${headerTitle}</p></div>
+    <div><p>${headerTitle}</p></div>
+</div>
+<!--第一页结束-->
+<!---分页标记-->
+<div style="page-break-after:always;"></div>
+<!--第二页开始-->
+<div class="page">
+    <div>第二页开始了</div>
+    <div>
+        <p>${content}</p>
+    </div>
+</div>
+
+</body>
+</html>
