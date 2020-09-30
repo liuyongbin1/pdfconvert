@@ -31,7 +31,6 @@ public class GeneratePdf {
     public static void main(String[] args) throws Exception {
         long l = System.currentTimeMillis();
         Student student = new Student();
-
         student.setName("小明");
         student.setSex("男");
         PdfDataDTO<Student> pdfDataDTO = new PdfDataDTO<>();
