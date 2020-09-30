@@ -18,14 +18,13 @@ import java.io.IOException;
 @Slf4j
 public class PdfFontProvider extends XMLWorkerFontProvider {
 
+    @Override
     public Font getFont(String fontname, String encoding, boolean embedded, float size, int style, BaseColor color) {
         BaseFont bf = null;
 
         try {
             bf = this.getBaseFont();
-        } catch (DocumentException e) {
-            log.error("获取基础字体格式失败", e);
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("获取基础字体格式失败", e);
         }
 
