@@ -1,23 +1,14 @@
 package test;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
 import com.lowagie.text.pdf.BaseFont;
 import dto.PdfDataDTO;
 import dto.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
-import org.xhtmlrenderer.pdf.util.XHtmlMetaToPdfInfoAdapter;
-import pdf.PDFBuilder;
-import pdf.PDFHeaderFooter;
-import pdf.PdfFontProvider;
+import pdfflying.HtmlToPdfCreationListener;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 
 /**
@@ -58,49 +49,16 @@ public class GeneratePdf {
             }
 //            String templateData = PdfUtil.fillTemplateData(stringBuilder.toString(), pdfDataDTO);
             try (FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\hjy20\\Desktop\\hello.pdf")) {
-//                fileOutputStream.write(createOrderContractPdf(stringBuilder.toString(), pdfDataDTO));
+//                fileOutputStream.write(PdfUtil.createOrderContractPdf(stringBuilder.toString(), pdfDataDTO));
 
-                fileOutputStream.write(itextHtmlToPDF(stringBuilder.toString()));
+                fileOutputStream.write(itextHtmlToPDF(stringBuilder.toString(), pdfDataDTO));
             }
         }
         System.out.println(System.currentTimeMillis() - l);
 
     }
 
-    private static byte[] createOrderContractPdf(String templateData, PdfDataDTO pdfDataDTO) throws IOException {
-        Document document = new Document(PageSize.A4);
-        document.setMargins(78.0F, 80.0F, 72.0F, 80.0F);
-        ByteArrayOutputStream pdfByte = null;
-        PdfWriter pdfWriter = null;
-
-        try {
-            pdfByte = new ByteArrayOutputStream();
-            pdfWriter = PdfWriter.getInstance(document, pdfByte);
-            PDFHeaderFooter headerFooterBuilder = new PDFHeaderFooter();
-            PDFBuilder builder = new PDFBuilder(headerFooterBuilder, pdfDataDTO);
-            builder.setPresentFontSize(10);
-            pdfWriter.setPageEvent(builder);
-            convertToPDF(pdfWriter, document, templateData, pdfDataDTO);
-            // 盖骑缝章
-//            PdfUtil.stamperCheckMarkPDF(pdfByte.toByteArray(), pdfByte, pdfDataDTO.getCachetFile());
-            // 加水印
-//            PdfUtil.waterMark(pdfByte.toByteArray(), pdfByte, "加水印");
-        } catch (DocumentException e) {
-            log.error("生成文档异常", e);
-        } finally {
-            if (pdfByte != null) {
-                pdfByte.close();
-            }
-            if (pdfWriter != null) {
-                pdfWriter.close();
-            }
-
-        }
-
-        return pdfByte.toByteArray();
-    }
-
-    public static byte[] itextHtmlToPDF(String templateData) {
+    public static byte[] itextHtmlToPDF(String templateData, PdfDataDTO pdfDataDTO) {
 
         ByteArrayOutputStream pdfByte = null;
         try {
@@ -114,10 +72,10 @@ public class GeneratePdf {
             // 方式二/HTML代码字符串方式生成PDF
             // HTML代码字符串
             renderer.setDocumentFromString(templateData);
+            renderer.setListener(new HtmlToPdfCreationListener(pdfDataDTO));
             renderer.layout();
-            renderer.createPDF(pdfByte, false);
-            renderer.setListener(new XHtmlMetaToPdfInfoAdapter(renderer.getDocument()));
-            renderer.finishPDF();
+            renderer.createPDF(pdfByte);
+//            renderer.finishPDF();
 
 
             Long endTime = System.currentTimeMillis();
@@ -134,21 +92,5 @@ public class GeneratePdf {
             }
         }
         return pdfByte.toByteArray();
-    }
-
-    private static void convertToPDF(PdfWriter pdfWriter, Document document, String templateData, PdfDataDTO pdfDataDTO) {
-        document.open();
-        try {
-            XMLWorkerHelper.getInstance().parseXHtml(pdfWriter, document, new ByteArrayInputStream(templateData.getBytes()), (InputStream) null, StandardCharsets.UTF_8, new PdfFontProvider());
-            // 盖总章
-//            PdfUtil.stampChapter(pdfWriter, pdfDataDTO.getCachetFile());
-        } catch (IOException e) {
-            log.error("convertToPDF -> IOException ->", e);
-        } catch (Exception e) {
-            log.error("convertToPDF -> Exception ->", e);
-        } finally {
-            document.close();
-        }
-
     }
 }

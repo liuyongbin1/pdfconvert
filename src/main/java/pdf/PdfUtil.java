@@ -1,10 +1,11 @@
 package pdf;
 
 import com.google.common.collect.Maps;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
 import dto.PdfDataDTO;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -14,10 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -137,6 +136,55 @@ public class PdfUtil {
         image.scaleAbsolute(120.0F, 120.0F);
         image.setAbsolutePosition(150.0F, 250.0F);
         directContent.addImage(image);
+    }
+
+    public static byte[] createOrderContractPdf(String templateData, PdfDataDTO pdfDataDTO) throws IOException {
+        Document document = new Document(PageSize.A4);
+        document.setMargins(78.0F, 80.0F, 72.0F, 80.0F);
+        ByteArrayOutputStream pdfByte = null;
+        PdfWriter pdfWriter = null;
+
+        try {
+            pdfByte = new ByteArrayOutputStream();
+            pdfWriter = PdfWriter.getInstance(document, pdfByte);
+            PDFHeaderFooter headerFooterBuilder = new PDFHeaderFooter();
+            PDFBuilder builder = new PDFBuilder(headerFooterBuilder, pdfDataDTO);
+            builder.setPresentFontSize(10);
+            pdfWriter.setPageEvent(builder);
+            convertToPDF(pdfWriter, document, templateData, pdfDataDTO);
+            // 盖骑缝章
+//            PdfUtil.stamperCheckMarkPDF(pdfByte.toByteArray(), pdfByte, pdfDataDTO.getCachetFile());
+            // 加水印
+//            PdfUtil.waterMark(pdfByte.toByteArray(), pdfByte, "加水印");
+        } catch (DocumentException e) {
+            log.error("生成文档异常", e);
+        } finally {
+            if (pdfByte != null) {
+                pdfByte.close();
+            }
+            if (pdfWriter != null) {
+                pdfWriter.close();
+            }
+
+        }
+
+        return pdfByte.toByteArray();
+    }
+
+    private static void convertToPDF(PdfWriter pdfWriter, Document document, String templateData, PdfDataDTO pdfDataDTO) {
+        document.open();
+        try {
+            XMLWorkerHelper.getInstance().parseXHtml(pdfWriter, document, new ByteArrayInputStream(templateData.getBytes()), (InputStream) null, StandardCharsets.UTF_8, new PdfFontProvider());
+            // 盖总章
+//            PdfUtil.stampChapter(pdfWriter, pdfDataDTO.getCachetFile());
+        } catch (IOException e) {
+            log.error("convertToPDF -> IOException ->", e);
+        } catch (Exception e) {
+            log.error("convertToPDF -> Exception ->", e);
+        } finally {
+            document.close();
+        }
+
     }
 
     /**
