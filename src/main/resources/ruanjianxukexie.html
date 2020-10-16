@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+　　@page{size:a4}
+    body{
+      font-size: 16px;
+      margin: 0 auto;
+      font-family:SimSun;
+      table-layout:fixed;
+      word-wrap:break-word;
+      word-break:break-all;
+    }
+    h2{text-align: center;}
+    h5{
+      text-align: right;
+      padding-right: 30px;
+    }
+    p{
+      line-height: 32px;
+      margin: 0;
+    }
+    .font-bold{font-weight: 600;}
+    .margin-top-30{margin-top: 30px;}
+    .indent{text-indent: 30px}
+    .noindent{text-indent: 0}
+    .width{
+      display: inline-block;
+      border-bottom: 1px solid #000;
+      width: 80px;
+      height: 26px;
+      text-align: center;
+    }
+    .no-bottom-border{border-bottom:0}
+    .width200{width: 200px;}
+    .width114{width: 114px;}
+    .width215{width: 215px;}
+    .width260{width: 260px;}
+    .width265{width: 265px;}
+    .width210{width: 210px;}
+    .width205{width: 205px;}
+    .margin-right166{margin-right: 166px;}
+    .margin-right215{margin-right: 215px;}
+    .margin-right20{margin-right: 20px;}
+    .table{
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    td{
+      padding: 10px 3px;
+    }
+  </style>
+</head>
+<body>
+  <h2>软件许可使用协议</h2>
+  <h5>合同编号：${No}</h5>
+  <p class="font-bold">甲方（被许可方）：<span class="width width200 margin-right20">${plartyA}</span>乙方（许可方）：<span class="width width215">杭州微洱网络科技有限公司</span></p>
+  <p>统一社会信用代码/身份证号码：<span class="width width114 margin-right20">${cardNo}</span>统一社会信用代码：<span class="width width200">91330110MA280HMM41</span></p>
+  <p>联系地址：<span class="width width265 margin-right20">${attr}</span>联系地址：<span class="width width260">杭州市余杭区文一西路1382号601-5</span></p>
+  <p>联系人/联系电话：<span class="width width210 margin-right20">${phone}</span>联系人/联系电话：<span class="width width205">${phone}</span></p>
+
+  <p class="margin-top-30 indent">鉴于乙方为人工智能服务软件“小微”的开发者和拥有者，旨在为电商在线店铺提供智能服务
+  等接入式技术服务。现甲乙双方在友好协商、平等互利的基础上，就甲方购买“小微 “服务相关事宜签署如下协议：</p>
+  <p class="font-bold indent">第一条 许可产品及范围</p>
+  <p  class="indent"> 1.1甲方按照本协议向乙方支付软件许可使用费后，乙方授权甲方在指定店铺ID对人工智能服务软件“小微”（以下简称“许可软件”）享有一项不可转让的、非排他性的合法使用权。</p>
+  <p class="font-bold indent">第二条 许可使用期限、费用及支付方式</p>
+  <p  class="indent">2.1本协议许可费用等如下： </p>
+  <table border="1" class="table">
+    <tr>
+      <td>平台</td>
+      <td>产品套餐</td>
+      <td>版本</td>
+      <td>店铺ID</td>
+      <td>软件许可使用期限</td>
+      <td>总费用</td>
+    </tr>
+    <tr>
+      <td rowspan='4'>淘宝/天猫</td>
+      <td></td>
+      <td></td>
+      <td rowspan='4'></td>
+      <td rowspan='4' style="width: 140px;">
+        一年，自<span class="width">${year}</span>年<span class="width">${month}</span>月<span class="width">${day}</span>日</span>日期：<span class="width">${year}</span>年<span class="width">${month}</span>月<span class="width">${day}</span>日起计。
+      </td>
+      <td rowspan='4' style="width: 120px;">
+        人民币<span class="width width114"></span> 元，大写【<span class="width width114 no-bottom-border"></span>】元整
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <p  class="indent">2.2甲方在许可期限开始前一次性支付上述费用给乙方。乙方收到全部款项后，向甲方提供许可软件及相应服务。</p>
+  <p  class="indent">2.3甲方须在本协议约定的许可期限届满前30日内完成续费，否则本协议到期后乙方有权停止提供授权许可和服务。若甲方在本协议到期后7天内未及时完成续费的，乙方将不再保留甲方使用授权软件过程中形成的全部数据，由此造成的一切后果由甲方自行承担。</p>
+  <p  class="indent">2.4付款方式：甲方可选择以下任一付款方式完成付款 </p>
+  <p  class="indent">
+    <input type="checkbox"></input> 银行转账（杭州银行）：账号：3301040160006084688  户名：杭州微洱网络科技有限公司  开户行：杭州银行股份有限公司文创支行
+  </p>
+  <p  class="indent">
+    <input type="checkbox"></input> 银行转账（招商银行）：账号：571913813810902  户名：杭州微洱网络科技有限公司  开户行：招商银行股份有限公司杭州城西支行
+  </p>
+  <p  class="indent">
+    <input type="checkbox"></input> 银行转账（中国银行）：账号：390977737456  户名：杭州微洱网络科技有限公司  开户行：中国银行杭州建北支行
+  </p>
+  <p  class="indent">
+    <input type="checkbox"></input> 支付宝转账：账号：weierai@ywwl.com  名称：杭州微洱网络科技有限公司
+  </p>
+  <p  class="indent">
+    <input type="checkbox"></input> 其它支付方式：<span class="width width260"></span>
+  </p>
+  <p class="font-bold indent">第三条 许可限制</p>
+  <p  class="indent">3.1未经乙方事先书面许可，甲方不得实施以下行为：
+    <p  style="text-indent: 50px;">3.1.1将许可软件向第三方提供、出售、出租、出借、转让或提供分许可、转许可、通过信息网络传播或以其他形式供他人使用。</p>
+    <p  style="text-indent: 50px;">3.1.2对许可软件进行全部或部分的翻译、分解、反向编译、反向汇编、反向工程或其他尝试发现许可软件程序源代码的行为，或在许可软件的基础上书写或开发衍生软件、衍生产品或其他软件。</p>
+    <p  style="text-indent: 50px;">3.1.3限制、破坏或绕过许可软件附带的加密措施或乙方提供的其他确保许可软件合法、正确使用的限制措施。</p>
+    <p  style="text-indent: 50px;">3.1.4将许可软件用于除甲方内部使用之外的其他目的，包括但不限于向第三方提供应用服务、商业共享或其他软件共享安排。</p>
+    <p  style="text-indent: 30px;">甲方如存在上述任何一种行为的，乙方有权立即终止使用许可，甲方应按照本协议授权许可费总额的一倍向乙方支付违约金，并赔偿乙方由此所遭受的损失（包括但不限于律师费、诉讼费、差旅费等）。</p>
+  </p>
+  <p class="font-bold indent">第四条 甲方权利义务</p>
+  <p  class="indent">4.1 甲方使用许可软件必须遵守国家有关法律法规和政策，不得利用许可软件发表、传播、储存违反国家法律、危害国家安全、祖国统一、社会稳定的内容，或侮辱、诽谤、色情、暴力等任何违反国家法律法规政策的内容；不得利用许可软件发表、传播、储存侵害他人知识产权、商业秘密等合法权利的内容。否则由此所引发的后果将由甲方独立承担，若因此给乙方造成损失的，还应向乙方进行赔偿。</p>
+  <p  class="indent">4.2 甲方应按照乙方说明正确使用许可软件，如因乙方之外的任何人对许可软件作任何形式的修改、甲方错误使用许可软件、或由于甲方或第三方产品的故障（如计算机设备故障、网络故障等）使许可软件无法正常运行或引发任何纠纷的，乙方不承担责任。</p>
+  <p class="font-bold indent">第五条 乙方权利义务</p>
+  <p  class="indent">5.1在协议期内，乙方为甲方提供以下相关服务：
+    <p  style="text-indent: 50px;">5.1.1合作初期对许可软件的安装调试、初始化设置工作；</p>
+    <p  style="text-indent: 50px;">5.1.2乙方在工作时间内给甲方提供包括电话、邮件、即时通讯工具、网络远程协助等形式的服务与技术支持。如果甲方需要提供现场服务，则由甲方承担乙方人员的交通和食宿等费用。</p>
+  </p>
+  <p  class="indent">5.2 乙方可能会对许可软件进行不断更新和升级，包括但不限于功能优化、功能新增等，对此，甲方应给予充分理解和配合。相关更新或升级将以本协议约定的联系方式或其他方式通知甲方。</p>
+  <p  class="indent">5.3 如发现甲方出现非法行为，乙方有权暂停提供授权许可及服务直至甲方查清停止非法行为为止。</p>
+  <p  class="indent">5.4 使用许可软件涉及到互联网服务因素，可能会受到各个环节不稳定因素的影响，存在因不可抗力、计算机病毒、黑客攻击、系统不稳定以及运营商（如“淘宝”）政策等原因造成服务中断或许可软件无法满足需求，乙方不承担责任，但应尽最大努力保护甲方权益并在事件结束后配合甲方立即进行修复处理。</p>
+  <p class="font-bold indent">第六条 客户信息资料保护</p>
+  <p  class="indent">6.1 甲方授权乙方通过“小微”服务，实现甲方对客户订单跟进、评价管理等服务，基于服务实现，甲方将其必要的数据信息（包括但不限于交易信息、客户信息）授权给乙方使用。为服务所需，乙方可将该数据信息同步授权给其服务合作方。</p>
+  <p  class="indent">6.2甲方确认，其提供的数据信息系其合法取得，客户信息的获取及授权乙方使用已获客户确认。乙方确认，乙方将采取技术措施和其他必要措施，对从甲方获取的信息资料进行严格保护。</p>
+  <p  class="indent">6.3 本协议中的客户是指向甲方进行咨询、购买商品或要求甲方提供其他服务的个人。客户信息包括但不限于联系方式、收货地址、姓名等身份信息。</p>
+  <p class="font-bold indent">第七条 知识产权</p>
+  <p  class="indent">7.1 乙方拥有许可软件、服务及其相关所有信息内容（包括但不限于文字、图片、音频、视频、图表、界面设计、版面框架、有关数据或电子文档等）的知识产权或相应授权。未经乙方书面同意，甲方不得为任何商业或非商业目的自行或许可任何第三方实施、利用、转让上述知识产权。</p>
+  <p  class="indent">7.2 甲方拥有在使用乙方许可软件过程中所产生的数据及相关内容的所有权，但乙方可以在合理范围内或者为了更好地向甲方提供服务，可以使用或者授权第三方使用甲方的文件数据及相关内容。</p>
+  <p class="font-bold indent">第八条 保密</p>
+  <p  class="indent">8.1 未经对方书面许可或本协议另有约定，任何一方不得向任何第三方泄露本协议条款的任何内容、本协议的签订及履行情况，以及通过签订和履行本协议而获知的对方及对方关联公司的任何信息。但为本协议履行之需任何一方可向其法律、会计、商业及其它顾问、授权雇员披露前述信息，接收方代表应同意承担与本协议中所规定的保密义务相同或更严格的保密义务。保密条款并不因本协议的解除、终止、撤销而失效。</p>
+  <p  class="indent">8.2 如有违反，违约方应按本协议总额的20%向对方支付违约金，若违约金不足以弥补对方损失的，违约方还应另行赔偿。</p>
+  <p class="font-bold indent">第九条  违约责任</p>
+  <p  class="indent">9.1 除本协议另有约定外，任何一方直接或间接违反本协议的任何条款，不承担或不及时、充分地承担本协议项下其应承担的义务即构成违约行为，另一方有权以书面通知要求违约方纠正其违约行为并采取充分、有效、及时的措施消除违约后果，并赔偿另一方因此遭致的损失（包括但不限于律师费、公证费、诉讼费、差旅费等）。若违约方在收到另一方关于其违约行为的上述通知后7个工作日内未纠正其违约行为并采取充分、有效、及时的措施消除违约后果，另一方有权单方解除协议，并要求违约方承担赔偿责任。</p>
+  <p  class="indent">9.2 若甲方未及时履行付款义务的，乙方有权立即停止提供授权许可和服务，终止或解除合作；并就未付款项保留继续追偿的权利。本协议自乙方解除通知（包括但不限于微信、邮件、快递等通知方式）发出之日起自行终止。</p>
+  <p  class="indent">9.3 如因甲方原因导致本协议终止或解除的，乙方不退还甲方所支付的全部费用；如因乙方原因导致本协议终止或解除的，乙方在扣除甲方在退款前已经消耗的费用后，应将剩余费用退款给甲方。</p>
+  <p class="font-bold indent">第十条 法律适用及争议解决</p>
+  <p  class="indent">10.1 本协议适用中华人民共和国的法律法规规定。</p>
+  <p  class="indent">10.2 如果就本协议的解释或执行发生争议，各方应通过友好协商解决。如果协商不能解决，任何一方均有权向乙方所在地有管辖权的人民法院提起诉讼。</p>
+  <p class="font-bold indent">第十一条 生效及其他</p>
+  <p  class="indent">11.1 本协议自双方盖章之日起生效。本协议一式两份，双方各执一份，每一份均具有同等法律效力。</p>
+  <p  class="indent">11.2 本协议正文除第2.1条需按实手动填写、第2.4条需手动勾选外，任何以手写对本合同进行的修改或补充均不对乙方产生约束力。</p>
+  <p>（以下无正文）</p>
+  <div class="margin-top-30">
+    <div class="font-bold">
+      <p><span class="margin-right166">甲方（盖章）：${plartyA}</span>乙方（盖章）：${plartyB}</p>
+      <p><span class="margin-right215">经办人：${agentA}</span>经办人：${agentB}</p>
+      <p><span class="margin-right20">日期：<span class="width">${year}</span>年<span class="width">${month}</span>月<span class="width">${day}</span>日</span>日期：<span class="width">${year}</span>年<span class="width">${month}</span>月<span class="width">${day}</span>日</p>
+    </div>
+  </div>
+</body>
+</html>

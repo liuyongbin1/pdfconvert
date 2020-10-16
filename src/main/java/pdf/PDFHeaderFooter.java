@@ -24,6 +24,8 @@ public class PDFHeaderFooter implements HeaderFooterBuilder {
             int pageS = writer.getPageNumber();
             PdfContentByte canvas = writer.getDirectContent();
 
+            log.info("开始创建第{}页", pageS);
+            System.out.println("开始创建第" + pageS + "页");
             try {
                 canvas.setFontAndSize((new PdfFontProvider()).getBaseFont(), 10.0F);
             } catch (DocumentException e) {
