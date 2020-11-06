@@ -40,7 +40,7 @@ public class PdfUtil {
         config.setDefaultEncoding("UTF-8");
         config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         config.setLogTemplateExceptions(false);
-        configurationCache.put("template", config);
+        configurationCache.put(templateName, config);
     }
 
     /**
@@ -198,14 +198,14 @@ public class PdfUtil {
      */
     public static String fillTemplateData(String content, PdfDataDTO pdfDataDTO) throws IOException, TemplateException {
         StringWriter writer = new StringWriter();
-        Configuration configuration = getConfiguration("template");
-        Template template = new Template("template", new StringReader(content), configuration);
+        Configuration configuration = getConfiguration(templateName);
+        Template template = new Template(templateName, new StringReader(content), configuration);
         template.process(pdfDataDTO, writer);
         writer.flush();
         return writer.toString();
     }
 
     private static Configuration getConfiguration(String templateName) {
-        return (Configuration) configurationCache.get(templateName);
+        return configurationCache.get(templateName);
     }
 }
